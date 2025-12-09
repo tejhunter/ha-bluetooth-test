@@ -5,15 +5,16 @@ description: "Tentative de gestion du microphone Bluetooth via PulseAudio"
 arch:
   - aarch64  # Pour Raspberry Pi 5
 init: false
-host_network: true  # CRITIQUE pour Bluetooth
-host_dbus: true     # CRITIQUE pour DBus/Bluez
+host_network: false
+host_dbus: true
 privileged:
-  - NET_ADMIN
   - SYS_ADMIN
-  - SYS_RAWIO
+  - NET_ADMIN
 devices:
-  - /dev/snd:/dev/snd:rwm  # Accès aux périphériques audio
+  - /dev/snd:/dev/snd:rwm
+  - /dev/vchiq:/dev/vchiq:rwm # Important pour l'audio sur Raspberry Pi
 ports:
-  4713/tcp: 4713  # Port pour PulseAudio
-options: {}
-schema: {}
+  4713/tcp: 4713
+volumes:
+  - /run/dbus:/run/dbus:ro  # Connexion au DBus de l'hôte
+  - /var/run/bluetooth:/var/run/bluetooth:ro # Connexion à Bluetooth de l'hôte
