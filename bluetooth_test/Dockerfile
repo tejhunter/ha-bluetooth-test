@@ -1,4 +1,3 @@
-# Basé sur Alpine pour compatibilité HA OS
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
@@ -13,8 +12,7 @@ RUN apk add --no-cache \
     dbus \
     alsa-utils \
     bash \
-    curl \
-    && add-label io.hass.arch="aarch64"
+    curl
 
 
 # Script de démarrage
