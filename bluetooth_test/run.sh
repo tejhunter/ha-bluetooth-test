@@ -2,8 +2,8 @@
 set -e
 
 # Démarrer DBus (requis pour Bluez)
-echo "Démarrage de DBus..."
-dbus-daemon --system --fork
+#echo "Démarrage de DBus..."
+#dbus-daemon --system --fork
 
 # Démarrer le service Bluetooth
 echo "Démarrrage du service Bluetooth..."
