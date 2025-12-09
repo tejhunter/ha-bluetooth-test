@@ -5,16 +5,17 @@ FROM $BUILD_FROM
 # Installation des paquets ESSENTIELS
 RUN apk add --no-cache \
     pulseaudio \
-    pulseaudio-bluetooth \
+    pulseaudio-bluez \
     pulseaudio-utils \
     bluez \
     bluez-deprecated \
     bluez-libs \
-    bluez-tools \
     dbus \
     alsa-utils \
     bash \
-    curl
+    curl \
+    && add-label io.hass.arch="aarch64"
+
 
 # Script de démarrage
 COPY run.sh /
