@@ -1,0 +1,19 @@
+name: "Test Bluetooth HFP/HSP"
+version: "1.0.0"
+slug: "bluetooth_test"
+description: "Tentative de gestion du microphone Bluetooth via PulseAudio"
+arch:
+  - aarch64  # Pour Raspberry Pi 5
+init: false
+host_network: true  # CRITIQUE pour Bluetooth
+host_dbus: true     # CRITIQUE pour DBus/Bluez
+privileged:
+  - NET_ADMIN
+  - SYS_ADMIN
+  - SYS_RAWIO
+devices:
+  - /dev/snd:/dev/snd:rwm  # Accès aux périphériques audio
+ports:
+  4713/tcp: 4713  # Port pour PulseAudio
+options: {}
+schema: {}
